@@ -1,13 +1,13 @@
-// HomePage.jsx
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const HomePage = () => {
-    const navigate = useNavigate();
+function HomePage() {
+  const navigate = useNavigate();
+  
   return (
-    <div className="min-h-screen bg-gray-900 text-white w-full">
+    <div className="min-h-screen bg-gray-900 text-white w-full overflow-x-hidden">
       {/* Header */}
-      <header className="w-full px-6 py-4 flex justify-between items-center">
+      <header className="w-full px-6 py-4 flex justify-between items-center bg-gray-900">
         <div className="flex items-center gap-2">
           {/* Logo */}
           <div className="text-indigo-500">
@@ -18,13 +18,13 @@ const HomePage = () => {
           </h1>
         </div>
         
-        <button onClick={() => navigate('/auth')} className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition duration-200">
+        <Link to="/auth" className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition duration-200">
           Join Now
-        </button>
+        </Link>
       </header>
 
       {/* Hero Section */}
-      <section className="w-full px-6 py-12 md:py-20">
+      <section className="w-full px-6 py-12 md:py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:space-x-12">
           {/* Text content */}
           <div className="md:w-1/2 space-y-6 mb-8 md:mb-0">
@@ -38,12 +38,9 @@ const HomePage = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 pt-2">
-              <button onClick={() => navigate('/auth')} className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-lg font-medium">
-                Sign Up
-              </button>
-              <button onClick={() => navigate('/auth')} className="bg-transparent border border-indigo-500 hover:bg-indigo-800/30 text-white px-6 py-3 rounded-lg font-medium transition duration-200">
-                Log In
-              </button>
+              <Link to="/auth" className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-lg font-medium">
+                Log In with University Email
+              </Link>
             </div>
             
             <div className="flex items-center space-x-2 text-gray-400">
@@ -140,7 +137,7 @@ const HomePage = () => {
       </section>
       
       {/* Features Section */}
-      <section className="w-full px-6 py-16">
+      <section className="w-full px-6 py-16 bg-gray-900">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-2xl font-bold text-center mb-12">Why choose Chatwadi?</h3>
           
@@ -182,13 +179,13 @@ const HomePage = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="w-full px-6 py-16">
+      <section className="w-full px-6 py-16 bg-gray-900">
         <div className="max-w-7xl mx-auto bg-gradient-to-r from-indigo-800/50 to-purple-800/50 rounded-2xl p-8 md:p-12 text-center">
           <h3 className="text-3xl font-bold mb-4">Ready to start chatting?</h3>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">Join thousands of users already connecting on Chatwadi. Your next meaningful conversation is just a click away.</p>
-          <button className="bg-white text-indigo-900 hover:bg-gray-100 font-medium px-8 py-3 rounded-lg">
-            Get Started — It's Free
-          </button>
+          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">Join hundreds of Marwadi University students already connecting on Chatwadi. Your next meaningful conversation is just a click away.</p>
+          <Link to="/auth" className="bg-white text-indigo-900 hover:bg-gray-100 font-medium px-8 py-3 rounded-lg">
+            Log In with University Email
+          </Link>
         </div>
       </section>
       
@@ -218,6 +215,6 @@ const HomePage = () => {
       </footer>
     </div>
   );
-};
+}
 
 export default HomePage;
