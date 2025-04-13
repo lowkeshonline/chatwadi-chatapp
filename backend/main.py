@@ -14,11 +14,27 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Environment variables
-HOST = os.getenv("HOST", "0.0.0.0")
-PORT = int(os.getenv("PORT", "8000"))
-JWT_SECRET = os.getenv("JWT_SECRET", "your-secret-key")
-GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID", "198883014921-9v5urtj62uk99vo0p67in0lkah5gpn9j.apps.googleusercontent.com")
-ALLOWED_EMAIL_DOMAIN = os.getenv("ALLOWED_EMAIL_DOMAIN", "marwadiuniversity.ac.in")
+HOST = os.getenv("HOST")
+if not HOST:
+    raise ValueError("HOST environment variable is required")
+
+PORT = os.getenv("PORT")
+if not PORT:
+    raise ValueError("PORT environment variable is required")
+PORT = int(PORT)
+
+JWT_SECRET = os.getenv("JWT_SECRET")
+if not JWT_SECRET:
+    raise ValueError("JWT_SECRET environment variable is required")
+
+GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
+if not GOOGLE_CLIENT_ID:
+    raise ValueError("GOOGLE_CLIENT_ID environment variable is required")
+
+ALLOWED_EMAIL_DOMAIN = os.getenv("ALLOWED_EMAIL_DOMAIN")
+if not ALLOWED_EMAIL_DOMAIN:
+    raise ValueError("ALLOWED_EMAIL_DOMAIN environment variable is required")
+
 DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 app = FastAPI()

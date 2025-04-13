@@ -6,7 +6,7 @@ import jsPDF from 'jspdf';
 const API_URL = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000";
 const WS_URL = import.meta.env.VITE_WS_BASE_URL || "ws://127.0.0.1:8000";
 
-function ChatDashboard({ token, email }) {
+function ChatDashboard({ token, email, onLogout }) {
   const [chatStarted, setChatStarted] = useState(false);
   const [chatId, setChatId] = useState('');
   const [peer, setPeer] = useState('');
@@ -251,12 +251,12 @@ function ChatDashboard({ token, email }) {
             <img width="30" height="30" src="https://img.icons8.com/bubbles/100/chat.png" alt="chat"/>
           </div>
           <h2 className="text-xl md:text-2xl font-bold text-indigo-400">
-            <span className="hidden sm:inline">Chatwadi - Stranger Chat App</span>
+            <span className="hidden sm:inline">Chatwadi - Talk to Strangers</span>
             <span className="sm:hidden">Chatwadi</span>
           </h2>
         </div>
         <button 
-          onClick={() => window.location.href = '/'}
+          onClick={onLogout}
           className="p-2 md:px-4 md:py-2 bg-transparent border border-indigo-500 rounded-md hover:bg-indigo-500/20 transition-colors"
           title="Logout"
         >

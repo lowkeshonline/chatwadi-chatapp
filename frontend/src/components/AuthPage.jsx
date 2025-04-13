@@ -3,8 +3,10 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
 
-// Get API URL from environment variables
+// Get API URL from environment variables - no hardcoded values
 const API_URL = import.meta.env.VITE_API_BASE_URL;
+// Removed hardcoded Google Client ID and ensured it uses environment variables only
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
 function AuthPage({ onLogin }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,6 +18,7 @@ function AuthPage({ onLogin }) {
     setAuthError('');
     
     try {
+      console.log('Attempting Google login...');
       // Send the token ID to your backend for verification
       const res = await axios.post(`${API_URL}/google-login`, {
         token: credentialResponse.credential
@@ -29,9 +32,11 @@ function AuthPage({ onLogin }) {
           onLogin(res.data.token, res.data.email);
         }, 1500);
       } else {
+        console.error('Login failed:', res.data.message);
         setAuthError(res.data.message || "Only Marwadi University emails are allowed");
       }
     } catch (error) {
+      console.error('Login error:', error);
       // Production-safe error handling without logging sensitive data
       setAuthError(error.response?.data?.detail || 
                   "Login failed. Only Marwadi University emails are allowed.");
@@ -40,7 +45,8 @@ function AuthPage({ onLogin }) {
     }
   };
 
-  const handleGoogleError = () => {
+  const handleGoogleError = (error) => {
+    console.error('Google OAuth Error:', error);
     setAuthError("Google Sign-In failed. Please try again.");
   };
 
@@ -54,7 +60,7 @@ function AuthPage({ onLogin }) {
             <img width="40" height="40" src="https://img.icons8.com/bubbles/100/chat.png" alt="chat"/>
           </div>
           <h1 className="text-3xl font-bold bg-white-400 bg-clip-text">
-            Chatwadi
+            Chatwadi - Talk to Strangers
           </h1>
         </div>
       </header>
@@ -114,10 +120,15 @@ function AuthPage({ onLogin }) {
                           onError={handleGoogleError}
                           useOneTap={false}
                           auto_select={false}
+                          prompt="select_account"
+                          ux_mode="popup"
+                          hosted_domain="marwadiuniversity.ac.in"
+                          context="signin"
                           theme="filled_blue"
-                          text="signin_with"
+                          size="large"
                           shape="pill"
-                          width="300"
+                          text="signin_with"
+                          width={300}
                         />
                       </div>
                       <p className="text-center text-sm text-gray-400 mt-4">
