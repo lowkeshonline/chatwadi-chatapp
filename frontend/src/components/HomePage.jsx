@@ -37,7 +37,7 @@ function HomePage() {
               in a safe and friendly environment.
             </p>
             
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 pt-2">
+            <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-2">
               <Link to="/auth" className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-lg font-medium">
                 Log In with University Email
               </Link>
@@ -183,7 +183,7 @@ function HomePage() {
         <div className="max-w-7xl mx-auto bg-gradient-to-r from-indigo-800/50 to-purple-800/50 rounded-2xl p-8 md:p-12 text-center">
           <h3 className="text-3xl font-bold mb-4">Ready to start chatting?</h3>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">Join hundreds of Marwadi University students already connecting on Chatwadi. Your next meaningful conversation is just a click away.</p>
-          <Link to="/auth" className="bg-white text-indigo-900 hover:bg-gray-100 font-medium px-8 py-3 rounded-lg">
+          <Link to="/auth" className="bg-white text-indigo-900 hover:bg-gray-100 font-medium px-4 py-3 rounded-lg">
             Log In with University Email
           </Link>
         </div>

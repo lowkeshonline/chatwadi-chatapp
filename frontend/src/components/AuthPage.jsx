@@ -113,8 +113,8 @@ function AuthPage({ onLogin }) {
                       <span className="ml-2">Logging in...</span>
                     </div>
                   ) : (
-                    <div className="w-full">
-                      <div className="mb-4 pl-10 text-center">
+                    <div className="w-80">
+                      <div className="mb-4 mr-2 pl-10 text-center">
                         <GoogleLogin
                           onSuccess={handleGoogleSuccess}
                           onError={handleGoogleError}
@@ -128,7 +128,7 @@ function AuthPage({ onLogin }) {
                           size="large"
                           shape="pill"
                           text="signin_with"
-                          width={300}
+                          width={250}
                         />
                       </div>
                       <p className="text-center text-sm text-gray-400 mt-4">

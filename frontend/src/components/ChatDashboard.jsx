@@ -451,11 +451,6 @@ function ChatDashboard({ token, email, onLogout }) {
           </div>
         </div>
       </div>
-      
-      {/* Footer - Only visible on larger screens */}
-      <footer className="bg-gray-800 py-4 text-center text-gray-500 text-sm w-full hidden md:block">
-        <p>© 2025 Chatwadi - Anonymous chat for Marwadi University</p>
-      </footer>
     </div>
   );
 }
